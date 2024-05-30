@@ -8,7 +8,7 @@ const Conversation = () => {
           <div className='w-12 rounded-full'>
             <img
               src='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'
-              alt='avatar'
+              alt='not FOund'
             />
           </div>
         </div>

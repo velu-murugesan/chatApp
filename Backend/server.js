@@ -5,12 +5,23 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authroutes.js";
 import messageRoutes from "./routes/messageroutes.js";
 import userRoutes from "./routes/userroutes.js";
+import cors from "cors";
 
 import connectTomongoDB from "./db/connectTomongoDb.js";
 
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 3000;
+
+app.use(
+  cors({
+    allowedHeaders: ["sessionId", "Content-Type"],
+    exposedHeaders: ["sessionId"],
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+  })
+);
 
 app.use(express.json());
 
