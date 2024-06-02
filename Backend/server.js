@@ -9,6 +9,10 @@ import cors from "cors";
 
 import connectTomongoDB from "./db/connectTomongoDb.js";
 
+const path = "node_modules/source-map-loader/dist/utils.js";
+const regex =
+  /.*throw new Error\(`Failed to parse source map from '\${sourceURL}' file: \${error}`\);*/;
+
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 3000;

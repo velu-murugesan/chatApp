@@ -3,7 +3,7 @@ import GenderCheckbox from "./GenderCheckbox";
 import { useState } from "react";
 import UseSignup from "../../hooks/UseSignup.jsx";
 
-const SignUp = ({ setAuthUser }) => {
+const SignUp = () => {
   const [inputs, setInputs] = useState({
     fullname: "",
     username: "",
@@ -20,7 +20,7 @@ const SignUp = ({ setAuthUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup(inputs, { setAuthUser });
+    await signup(inputs);
   };
 
   return (
