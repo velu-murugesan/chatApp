@@ -7,10 +7,12 @@ import messageRoutes from "./routes/messageroutes.js";
 import userRoutes from "./routes/userroutes.js";
 import cors from "cors";
 import { app, server } from "./socket/socket.js";
+import path from "path";
 
 import connectTomongoDB from "./db/connectTomongoDb.js";
 
-const path = "node_modules/source-map-loader/dist/utils.js";
+const __dirname = path.resolve();
+
 const regex =
   /.*throw new Error\(`Failed to parse source map from '\${sourceURL}' file: \${error}`\);*/;
 
@@ -34,6 +36,12 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+
+app.use(express.static(path.join(__dirname, "/Frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+});
 
 // app.get("/", (req, res) => {
 //   res.send("<h1>Hello Vite + React</h1>");
