@@ -14,7 +14,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://chatapp-mern-ipyc.onrender.com", {
+      const socket = io("https://chatapmp-mern-ipyc.onrender.co", {
         query: {
           userId: authUser._id,
         },
@@ -23,6 +23,9 @@ export const SocketContextProvider = ({ children }) => {
       socket.on("getonlineusers", (data) => {
         setOnlineUser(data);
       });
+
+      console.log(onlineUser);
+
       return () => socket.close();
     } else {
       if (socket) {

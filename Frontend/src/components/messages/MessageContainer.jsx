@@ -4,9 +4,14 @@ import MessageInput from "./MessageInput.jsx";
 import Messages from "./Messages.jsx";
 import { TiMessages } from "react-icons/ti";
 import { useAuthContext } from "../../context/AuthContext.jsx";
+import { useSocketContext } from "../../context/SocketContext.jsx";
 
 const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useCoversation();
+  const { onlineUser } = useSocketContext();
+  console.log("onlineUser:", onlineUser);
+
+  const isOnline = onlineUser ? "online" : "offline";
 
   useEffect(() => {
     return () => setSelectedConversation(null);

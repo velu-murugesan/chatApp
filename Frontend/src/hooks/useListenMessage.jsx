@@ -15,6 +15,7 @@ const useListenMessage = () => {
       sound.play();
       setMessages([...messages, newMessage]);
     });
+    socket.emit("sendMessage", messages);
 
     return () => {
       socket?.off("newMessage");
